@@ -7,6 +7,8 @@ use Getopt::Long;
 #Using a colon : instead of the equals sign indicates that the option value is optional.
 #In this case, if no suitable value is supplied, string valued options get an empty string '' assigned, while numeric options are set to 0 .
 
+## SET DEFAULTS ##############################################################################
+
 my $min_min_readlength= '15'; #minimum min read length, minimum min is 15
 my $max_min_readlength= '45'; #maximum min read length
 my $step_min_readlength='5'; #step size for min read length
@@ -46,8 +48,11 @@ my $vectorTrimfiles='';
 my $sff_file='';
 my $printGraphs= 'TRUE' ;
 my $printrecommendedParameters= 'TRUE';
+
+# Use GetOptions fuctions to collect command line parameters and set to appropriate variables 
 #Get options
   GetOptions (
+  # Optional
   'readlength_Min':i => \$min_min_readlength,
   'readlength_Max':i => \$max_min_readlength,
   'readlength_Step':i => \$step_min_readlength,
@@ -57,12 +62,11 @@ my $printrecommendedParameters= 'TRUE';
   'min_id_Min':i => \$min_min_id,
   'min_id_Max':i => \$max_min_id,
   'min_id_Step':i => \$step_min_id,
+  'printGraphs':s => \$printGraphs,
+  'printrecommendedParameters':s => \$printrecommendedParameters
+  # Required 
   'projectName'=s => \$folder_name,
   'vectorTrimfiles'=s => $vectorTrimfiles\,
   'sff_file'=s => \$sff_file,
-  'printGraphs':s => \$printGraphs,
-  'printrecommendedParameters':s => \$printrecommendedParameters
+ );
 
-);
-$folder_name="" .$folder_name;
-# to implemet make sure to change all ARGV
