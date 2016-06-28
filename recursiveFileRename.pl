@@ -26,16 +26,17 @@ if (($ARGV[0] eq "-h")||($ARGV[0] eq "--help")){
 use Getopt::Long;
 # Get current directory
 my $current_dir= `pwd`;
-chomp($current_dir)
+chomp($current_dir);
 
 #collect file names in directory
 my @filenames_in_dir = `ls`;
+#my @filenames_in_dir= split(/""/, $filenames_in_dir);
 
-print(@filenames_in_dir);
 #some init variables
 my $filename='';
 my $filemin='0';
 my $filemax=scalar(@filenames_in_dir);
+print($filemax);
 my $file_ext='';
 my $verbose='FAlSE';
 
@@ -49,14 +50,17 @@ my $verbose='FAlSE';
   'v:s'=> \$verbose
 );
 
-for ($filemin_start = $filemin ;  $filemin_start <= $filemax; $filemin_start=$filemin_start+1) {
+for ($filemin_start = $filemin ;  $filemin_start < $filemax+1; $filemin_start=$filemin_start+1) {
   my $it_filename= $filename . $filemin_start . $file_ext;
-   my $file_to_change=chomp($filenames_in_dir[$filemin_start]);
+   my $file_to_change=$filenames_in_dir[$filemin_start];
+   chomp($file_to_change);
   if ($verbose eq "TRUE") {
-    print("Now renaming $filenames_in_dir[$filemin_start] to $it_filename \n");
-    system("mv $current_dir/$file_to_change $current_dir/$it_filename");
+    print("Now renaming $file_to_change to $it_filename \n");
+    system("rename $file_to_change $it_filename ./$file_to_change");
   }
-  system("mv $current_dir/$file_to_change $current_dir/$it_filename");
+  system("rename $file_to_change $it_filename ./$file_to_change");
 }
-
+@filenames_in_dir = `ls`;
+$filemax=scalar(@filenames_in_dir);
+print("$filemax\n");
 die;
