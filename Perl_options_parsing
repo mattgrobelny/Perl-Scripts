@@ -49,9 +49,9 @@ my $sff_file='';
 my $printGraphs= 'TRUE' ;
 my $printrecommendedParameters= 'TRUE';
 
-# Use GetOptions fuctions to collect command line parameters and set to appropriate variables 
+# Use GetOptions fuctions to collect command line parameters and set to appropriate variables
 #Get options
-<<<<<<< HEAD
+
 GetOptions (
 
   #Optional options
@@ -70,27 +70,7 @@ GetOptions (
   #Required options
   "projectName=s" => \$folder_name,
   "vectorTrimfiles=s" => \$vectorTrimfiles,
-  "sff_file=s" => \$sff_file);
+  "sff_file=s" => \$sff_file
+);
 $folder_name="" .$folder_name;
 # to implemet make sure to change all ARGV
-=======
-  GetOptions (
-  # Optional
-  'readlength_Min':i => \$min_min_readlength,
-  'readlength_Max':i => \$max_min_readlength,
-  'readlength_Step':i => \$step_min_readlength,
-  'minoverlap_Min':i => \$min_minoverlap,
-  'minoverlap_Max':i => \$max_minoverlap,
-  'minoverlap_Step':i => \$step_minoverlap,
-  'min_id_Min':i => \$min_min_id,
-  'min_id_Max':i => \$max_min_id,
-  'min_id_Step':i => \$step_min_id,
-  'printGraphs':s => \$printGraphs,
-  'printrecommendedParameters':s => \$printrecommendedParameters
-  # Required 
-  'projectName'=s => \$folder_name,
-  'vectorTrimfiles'=s => $vectorTrimfiles\,
-  'sff_file'=s => \$sff_file,
- );
-
->>>>>>> origin/master
