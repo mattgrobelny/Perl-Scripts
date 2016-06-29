@@ -50,15 +50,18 @@ my $verbose='FAlSE';
   'v:s'=> \$verbose
 );
 
-for ($filemin_start = $filemin ;  $filemin_start < $filemax+1; $filemin_start=$filemin_start+1) {
+#change directory
+chdir "$current_dir";
+
+for ($filemin_start = $filemin ;  $filemin_start < $filemax; $filemin_start=$filemin_start+1) {
   my $it_filename= $filename . $filemin_start . $file_ext;
    my $file_to_change=$filenames_in_dir[$filemin_start];
    chomp($file_to_change);
   if ($verbose eq "TRUE") {
     print("Now renaming $file_to_change to $it_filename \n");
-    system("rename $file_to_change $it_filename ./$file_to_change");
+    system("mv -n -v $file_to_change $it_filename");
   }
-  system("rename $file_to_change $it_filename ./$file_to_change");
+  system("mv -n -v $file_to_change $it_filename");
 }
 @filenames_in_dir = `ls`;
 $filemax=scalar(@filenames_in_dir);
