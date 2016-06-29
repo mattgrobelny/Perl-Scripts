@@ -62,4 +62,4 @@ for ($filemin_start = $filemin ;  $filemin_start < $filemax; $filemin_start=$fil
   }
   system("mv -n $file_to_change $it_filename");
 }
-die print("Done! but may or may not have worked so double check!");
+die print("Done! but may or may not have worked so double check! \n");
