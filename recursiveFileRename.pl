@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 use warnings;
 
 if (($ARGV[0] eq "-h")||($ARGV[0] eq "--help")){
