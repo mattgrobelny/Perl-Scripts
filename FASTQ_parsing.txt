@@ -1,0 +1,5 @@
+# Look for barcode "ACCAT" and capture complete FASTQ record 
+$ grep -A 2 -B 1 "^ACCAT" --no-group-separator s_1_sequence.txt > sample_01.fq
+
+# Count the number of uniq bar codes 
+$ grep -A 1 "@" --no-group-separator s_1_sequence.txt |  grep -v "@" | grep -oP "^.{5}" | sort -h| uniq -c | sort -h
