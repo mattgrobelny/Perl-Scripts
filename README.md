@@ -1,2 +1,2 @@
 # Perl-Scripts
-Collection of Perl Scripts for Computational Biology
+Collection of Scripts for Computational Biology
