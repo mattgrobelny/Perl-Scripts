@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use warnings;
 
-if (($ARGV[0] eq "-h")||($ARGV[0] eq "--help")){
+if ($ARGV[0] eq ('-h'|'--help')){
   print(
   " File Renaming Script\n\n
   This script will renames all files in a directory, starting from first to last file.\n
@@ -52,13 +52,13 @@ my $verbose='FAlSE';
 );
 
 #change directory
-chdir "$current_dir";
+chdir $current_dir;
 
 for ($filemin_start = $filemin ;  $filemin_start < $filemax; $filemin_start=$filemin_start+1) {
   my $it_filename= $filename . $filemin_start . $file_ext;
    my $file_to_change=$filenames_in_dir[$filemin_start];
    chomp($file_to_change);
-  if ($verbose eq "TRUE") {
+  if ($verbose eq 'TRUE') {
     system("mv -n -v $file_to_change $it_filename");
   }
   system("mv -n $file_to_change $it_filename");
